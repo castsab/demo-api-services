@@ -1,0 +1,8 @@
+type Query { 
+    #List of users
+    users: [User]
+}
+
+
+
+

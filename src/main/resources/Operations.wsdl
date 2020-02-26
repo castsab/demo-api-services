@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://webservices.com.oc.bizagi" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://webservices.com.oc.bizagi" xmlns:intf="http://webservices.com.oc.bizagi" xmlns:tns1="http://dto.webservices.com.oc.bizagi" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://webservices.com.oc.bizagi" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://dto.webservices.com.oc.bizagi"/>
+   <element name="addNumbers">
+    <complexType>
+     <sequence>
+      <element name="requestNumbers" type="tns1:RqNumbers"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="addNumbersResponse">
+    <complexType>
+     <sequence>
+      <element name="addNumbersReturn" type="tns1:RsNumbers"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="sayMyName">
+    <complexType>
+     <sequence>
+      <element name="requestName" type="tns1:RqComplexName"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="sayMyNameResponse">
+    <complexType>
+     <sequence>
+      <element name="sayMyNameReturn" type="tns1:RsComplexName"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://dto.webservices.com.oc.bizagi" xmlns="http://www.w3.org/2001/XMLSchema">
+   <complexType name="RqNumbers">
+    <sequence>
+     <element name="number1" type="xsd:int"/>
+     <element name="number2" type="xsd:int"/>
+    </sequence>
+   </complexType>
+   <complexType name="RsNumbers">
+    <sequence>
+     <element name="result" type="xsd:int"/>
+    </sequence>
+   </complexType>
+   <complexType name="RqComplexName">
+    <sequence>
+     <element name="lastName" nillable="true" type="xsd:string"/>
+     <element name="name" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="RsComplexName">
+    <sequence>
+     <element name="name" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="addNumbersResponse">
+
+      <wsdl:part element="impl:addNumbersResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="addNumbersRequest">
+
+      <wsdl:part element="impl:addNumbers" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="sayMyNameRequest">
+
+      <wsdl:part element="impl:sayMyName" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="sayMyNameResponse">
+
+      <wsdl:part element="impl:sayMyNameResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="Operations">
+
+      <wsdl:operation name="addNumbers">
+
+         <wsdl:input message="impl:addNumbersRequest" name="addNumbersRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:addNumbersResponse" name="addNumbersResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="sayMyName">
+
+         <wsdl:input message="impl:sayMyNameRequest" name="sayMyNameRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:sayMyNameResponse" name="sayMyNameResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="OperationsSoapBinding" type="impl:Operations">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="addNumbers">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="addNumbersRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="addNumbersResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="sayMyName">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="sayMyNameRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="sayMyNameResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="OperationsService">
+
+      <wsdl:port binding="impl:OperationsSoapBinding" name="Operations">
+
+         <wsdlsoap:address location="http://localhost:9090/BasicOperactions/services/Operations"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
