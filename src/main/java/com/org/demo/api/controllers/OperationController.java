@@ -2,7 +2,9 @@ package com.org.demo.api.controllers;
 
 import com.demo.ws.ServiceWeb;
 import com.demo.ws.ServiceWeb_Service;
+import com.org.demo.api.services.OperationService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,17 +16,16 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/test")
 @Slf4j
 public class OperationController {
+    
+    @Autowired
+    private OperationService operationService;
 
     @PostMapping("/suma")
     @ResponseBody
     public double suma(
             @RequestParam("a") double a,
             @RequestParam("b") double b) {
-
-        ServiceWeb_Service serviceService = new ServiceWeb_Service();
-        ServiceWeb serviceWeb = serviceService.getServiceWebPort();
-        double result = serviceWeb.suma(a, b);
-        return result;
+        return operationService.suma(a, b);
     }
 
 }
